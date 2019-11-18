@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Expense Manager</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="inform_intro">Fill your information</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="balance">Balance</string>
+    <string name="action_finish">Registator</string>
+
+</resources>

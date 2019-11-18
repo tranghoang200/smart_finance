@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "454111017051",
+    "firebase_url": "https://smart-finance-24c75.firebaseio.com",
+    "project_id": "smart-finance-24c75",
+    "storage_bucket": "smart-finance-24c75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454111017051:android:39b3145a97d908e480a77e",
+        "android_client_info": {
+          "package_name": "com.tranghoang.expense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454111017051-ld01j70hrhb2kk9a76egs8vng1tk68dl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-MrgJY9kNOhb2h7bikgKyx7aHdHg_aKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454111017051-ld01j70hrhb2kk9a76egs8vng1tk68dl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
