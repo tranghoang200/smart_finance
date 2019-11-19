@@ -82,6 +82,9 @@ public class DashBoardFragment extends Fragment {
     private RecyclerView mRecyclerIncome;
     private RecyclerView mRecyclerExpense;
 
+    double balanceInit;
+    double balanceChange;
+    DatabaseReference balanceRef;
 
 
     @Override
@@ -98,7 +101,7 @@ public class DashBoardFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String firebaseUsername = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        final DatabaseReference balanceRef = database.getReference("users/" + firebaseUsername).child("balance");
+        balanceRef = database.getReference("users/" + firebaseUsername).child("balance");
 
 
         // Read from the database
@@ -108,7 +111,7 @@ public class DashBoardFragment extends Fragment {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 Double value = dataSnapshot.getValue(Double.class);
-
+                balanceInit = value;
                 totalBalance.setText(String.valueOf(value));
                 Log.d("DATABASE DEBUGGING", "Value is: " + value);
 
@@ -196,7 +199,7 @@ public class DashBoardFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 int totalsum = 0;
-                double total = Double.parseDouble(totalBalance.getText().toString());
+                double total = balanceInit;
 
                 for (DataSnapshot mysnap:dataSnapshot.getChildren()){
 
@@ -208,7 +211,8 @@ public class DashBoardFragment extends Fragment {
                     String stResult=String.valueOf(totalsum);
 
                     totalIncomeResult.setText(stResult+".00");
-                    balanceRef.setValue(total);
+//                    balanceChange = total;
+//                    totalBalance.setText(String.valueOf(total));
                 }
 
             }
@@ -228,7 +232,7 @@ public class DashBoardFragment extends Fragment {
 
                 int totalsum = 0;
 
-                double total = Double.parseDouble(totalBalance.getText().toString());
+                double total = balanceChange;
 
                 for (DataSnapshot mysnapshot:dataSnapshot.getChildren()){
 
@@ -240,7 +244,7 @@ public class DashBoardFragment extends Fragment {
 
                     totalExpenseResult.setText(strTotalSum+".00");
 
-                    balanceRef.setValue(total);
+//                    totalBalance.setText(String.valueOf(total));
                 }
 
             }
@@ -407,6 +411,8 @@ public class DashBoardFragment extends Fragment {
 
                 Data data=new Data(ourammontint,type,note,id,mDate);
 
+                balanceRef.setValue(balanceInit + ourammontint);
+
                 mIncomeDatabase.child(id).setValue(data);
 
                 Toast.makeText(getActivity(),"Data ADDED",Toast.LENGTH_SHORT).show();
@@ -476,6 +482,7 @@ public class DashBoardFragment extends Fragment {
                 String mDate=DateFormat.getDateInstance().format(new Date());
 
                 Data data=new Data(inamount,tmtype,tmnote,id,mDate);
+                balanceRef.setValue(balanceInit - inamount);
                 mExpenseDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(),"Data added",Toast.LENGTH_SHORT).show();
 

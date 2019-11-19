@@ -12,6 +12,22 @@
     <string name="last_name">Last Name</string>
     <string name="first_name">First Name</string>
     <string name="balance">Balance</string>
-    <string name="action_finish">Registator</string>
+    <string name="action_finish">Registation</string>
+
+
+    <string name="split">Split</string>
+    <string name="result">Result</string>
+    <string name="split_expense_title">Split Expense</string>
+    <string name="expense_title">Expense Title</string>
+    <string name="expense_title_input">Title</string>
+    <string name="num_people">Number of People</string>
+    <string name="num_people_input">Amount</string>
+    <string name="split_amount">Amount</string>
+    <string name="split_type">Expense Type</string>
+    <string name="split_types">Type</string>
+    <string name="amount">Amount</string>
+    <string name="add">Add</string>
+    <string name="exit">Exit</string>
+    <string name="title">Title</string>
 
 </resources>

@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tranghoang.expense.R;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -153,7 +154,7 @@ public class ExpenseFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-    private static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         View mView;
 
