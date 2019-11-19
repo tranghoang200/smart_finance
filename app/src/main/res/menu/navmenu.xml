@@ -13,6 +13,10 @@
         android:title="Expense"
         android:icon="@drawable/expense"/>
 
+    <item android:id="@+id/piechart"
+        android:title="Summary Chart"
+        android:icon="@drawable/chart"/>
+
     <item android:id="@+id/split"
         android:title="Split with Friends"
         android:icon="@drawable/split"/>

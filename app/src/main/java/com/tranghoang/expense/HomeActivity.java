@@ -137,6 +137,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 fragment=new ExpenseFragment();
                 break;
 
+            case R.id.piechart:
+                fragment = new ChartFragment();
+                break;
+
             case R.id.split:
                 fragment = new SplitFragment();
                 break;
