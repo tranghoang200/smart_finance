@@ -70,7 +70,7 @@
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:id="@+id/signin_here"
-                android:text="Already have account?Sign in here."
+                android:text="Already have account? Sign in here."
                 android:padding="5dp"
                 />
 

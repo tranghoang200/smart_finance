@@ -10,11 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tranghoang.expense.Model.Data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,9 +32,16 @@ import lecho.lib.hellocharts.view.PieChartView;
  * A simple {@link Fragment} subclass.
  */
 public class ChartFragment extends Fragment {
-    ArrayList<String> expense;
-    ArrayList<String> income;
-    Double sum = 0.0;
+    ArrayList<Double> expense;
+    ArrayList<Double> income;
+    Double sum;
+    double expenseSum;
+    double incomeSum;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mExpenseDatabase;
+    private DatabaseReference mIncomeDatabase;
+
+    String uid;
     HashMap<String, Double> cat;
     ArrayList<String> list;
     PieChartView pieChartView;
@@ -48,48 +57,64 @@ public class ChartFragment extends Fragment {
         // Inflate the layout for this fragment
         View myview =  inflater.inflate(R.layout.fragment_chart, container, false);
 
-        expense = new ArrayList<String>();
-        income = new ArrayList<String>();
+        expense = new ArrayList<Double>();
+        income = new ArrayList<Double>();
         cat=new HashMap();
         list=new ArrayList<>();
+
+        expenseSum=0.0;
+        incomeSum=0.0;
+        sum=0.0;
 
         pieChartView = myview.findViewById(R.id.chart);
         pieChartView_cat = myview.findViewById(R.id.chart_cat);
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String firebaseUsername = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference transactionRef = database.getReference("users/" + firebaseUsername).child("transactions");
+        mAuth=FirebaseAuth.getInstance();
 
-        transactionRef.addValueEventListener(new ValueEventListener() {
+        FirebaseUser mUser=mAuth.getCurrentUser();
+        uid=mUser.getUid();
+        mExpenseDatabase= FirebaseDatabase.getInstance().getReference().child("ExpenseDatabase").child(uid);
 
+        mExpenseDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println(dataSnapshot);
-                if (dataSnapshot != null) {
-                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                        Log.i("new data", postSnapshot.toString());
-                        String sign = postSnapshot.getValue().toString().substring(0, 1);
-                        String value = postSnapshot.getValue().toString().substring(2, postSnapshot.getValue().toString().length());
-                        String[] key = postSnapshot.getKey().split("=");
-                        if (cat.containsKey(key[2])){
-                            cat.put(key[2], cat.get(key[2])+ Double.parseDouble(value));
-                        } else {
-                            cat.put(key[2], Double.parseDouble(value));
-                        }
-                        sum += Double.parseDouble(postSnapshot.getValue().toString().substring(2, postSnapshot.getValue().toString().length()));
-                        if (sign.equals("-")) {
-                            expense.add(value);
-                            Log.i("expense", expense.toString());
-                        } else {
-                            income.add(value);
-                            Log.i("income", income.toString());
-                        }
-                        Log.i("sum", String.valueOf(sum));
-                    }
-                    drawchart(expense, income);
-                    drawcat(cat);
+
+
+
+                for (DataSnapshot mysanapshot:dataSnapshot.getChildren()){
+
+                    Data data=mysanapshot.getValue(Data.class);
+                    expense.add((double) data.getAmount());
+                    sum+=(double) data.getAmount();
+
                 }
+                mIncomeDatabase= FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
+
+                mIncomeDatabase.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+
+                        for (DataSnapshot mysanapshot:dataSnapshot.getChildren()){
+
+                            Data data=mysanapshot.getValue(Data.class);
+                            income.add((double) data.getAmount());
+                            sum+=(double) data.getAmount();
+
+                        }
+                        drawchart(expense, income);
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
             }
 
             @Override
@@ -101,15 +126,15 @@ public class ChartFragment extends Fragment {
         return myview;
     }
 
-    public void drawchart(ArrayList<String> expense, ArrayList<String> income) {
+    public void drawchart(ArrayList<Double> expense, ArrayList<Double> income) {
         double sum_expense = 0.0;
         double sum_income = 0.0;
         for (int i = 0; i < expense.size(); i++) {
-            sum_expense += Double.parseDouble(expense.get(i));
+            sum_expense += expense.get(i);
         }
         Log.i("sum_expense", String.valueOf(sum_expense));
         for (int i = 0; i < income.size(); i++) {
-            sum_income += Double.parseDouble(income.get(i));
+            sum_income += income.get(i);
         }
         Log.i("sum_income", String.valueOf(sum_income));
         int expense_percent = (int) Math.round((sum_expense *100) / sum);
