@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_color"
     tools:context="com.tranghoang.expense.BalanceActivity"
     android:gravity="top">
 
@@ -12,8 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/inform_intro"
+        android:layout_margin="15dp"
         android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="30sp" />
@@ -28,15 +30,18 @@
             android:id="@+id/last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:layout_margin="15dp"
+            android:background="@drawable/edittext_background"
             android:hint="@string/last_name"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:inputType="textNoSuggestions"
             android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions"
             android:maxLines="1"
-            android:textIsSelectable="false"
-            android:textStyle="bold"/>
+            android:padding="15dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textIsSelectable="true"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -51,11 +56,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/first_name"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:imeOptions="actionNext"
-            android:textColorHint="@color/colorPrimary"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:textColorHint="#FFFFFF"
             android:inputType="textNoSuggestions"
+            android:background="@drawable/edittext_background"
             android:maxLines="1"
             android:textIsSelectable="false"
             android:textStyle="bold"/>
@@ -73,12 +81,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/balance"
+            android:background="@drawable/edittext_background"
             android:imeOptions="actionNext"
+            android:padding="15dp"
             android:importantForAutofill="no"
             android:inputType="numberSigned"
+            android:layout_margin="15dp"
             android:maxLines="1"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -88,11 +99,13 @@
     <Button
         android:id="@+id/register_finish"
         style="?android:textAppearanceMedium"
-        android:layout_width="401dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:layout_marginTop="16dp"
-        android:background="#000000"
+        android:background="@drawable/edittext_background"
         android:onClick="signUp"
+        android:padding="15dp"
         android:text="@string/action_finish"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -103,6 +116,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:layout_marginTop="16dp"
         android:max="100"
         android:progress="50" />
