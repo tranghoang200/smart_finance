@@ -568,7 +568,7 @@ public class DashBoardFragment extends Fragment {
 
         }
 
-        public void setIncomeAmmount(int ammount){
+        public void setIncomeAmmount(double ammount){
 
             TextView mAmmount=mIncomeView.findViewById(R.id.ammoun_income_ds);
             String strAmmount=String.valueOf(ammount);
@@ -600,7 +600,7 @@ public class DashBoardFragment extends Fragment {
             mtype.setText(type);
         }
 
-        public void setExpenseAmmount(int ammount){
+        public void setExpenseAmmount(double ammount){
             TextView mAmmount = mExpenseView.findViewById(R.id.ammoun_expense_ds);
             String strAmmount=String.valueOf(ammount);
             mAmmount.setText(strAmmount);

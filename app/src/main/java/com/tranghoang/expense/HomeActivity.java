@@ -145,6 +145,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new SplitFragment();
                 break;
 
+            case R.id.noti:
+                fragment = new NotificationFragment();
+                break;
+
             case R.id.logout:
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(), com.tranghoang.expense.MainActivity.class));

@@ -21,6 +21,10 @@
         android:title="Split with Friends"
         android:icon="@drawable/split"/>
 
+    <item android:id="@+id/noti"
+        android:title="Notification"
+        android:icon="@drawable/noti"/>
+
     <item android:id="@+id/logout"
         android:title="Log out"
         android:icon="@drawable/logout"/>

@@ -2,12 +2,12 @@ package com.tranghoang.expense.Model;
 
 public class Data {
 
-    private int amount;
+    private double amount;
     private String type;
     private String note;
     private String id;
 
-    public Data(int amount, String type, String note, String id, String date) {
+    public Data(double amount, String type, String note, String id, String date) {
         this.amount = amount;
         this.type = type;
         this.note = note;
@@ -15,11 +15,11 @@ public class Data {
         this.date = date;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

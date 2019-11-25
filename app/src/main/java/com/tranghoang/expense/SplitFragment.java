@@ -14,14 +14,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tranghoang.expense.Model.Data;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -40,6 +44,10 @@ public class SplitFragment extends Fragment {
     private Button exit;
     public Button add;
     private int index;
+
+    private DatabaseReference mExpenseDatabase;
+    DatabaseReference balanceRef;
+    TextView balanceInvi;
 
 
     public SplitFragment() {
@@ -87,6 +95,32 @@ public class SplitFragment extends Fragment {
             }
         });
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String firebaseUsername = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        balanceRef = database.getReference("users/" + firebaseUsername).child("balance");
+
+        balanceInvi = myview.findViewById(R.id.balanceINvi);
+
+
+        // Read from the database
+        balanceRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                Double value = dataSnapshot.getValue(Double.class);
+                balanceInvi.setText(String.valueOf(value));
+                Log.d("DATABASE DEBUGGING", "Value is: " + value);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("DATABASE DEBUGGING", "Failed to read value.", error.toException());
+            }
+        });
+
         return myview;
     }
 
@@ -123,37 +157,50 @@ public class SplitFragment extends Fragment {
 //            startActivity(intent);
 
         } else {
-            String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-//            Intent intent = new Intent(this, MainChatActivity.class);
+//            String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+////            Intent intent = new Intent(this, MainChatActivity.class);
+//
+//            FirebaseDatabase database = FirebaseDatabase.getInstance();
+//            String firebaseUsername = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//            DatabaseReference myRef = database.getReference("users/" + firebaseUsername).child("transactions");
+//            myRef.child(currentDate + "=Split=").setValue("- " + String.valueOf(money_to.getText()));
+//            final String a = String.valueOf(money_to.getText());
+//            final DatabaseReference balanceRef = database.getReference("users/" + firebaseUsername).child("balance");
+//            balanceRef.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    // This method is called once with the initial value and again
+//                    // whenever data at this location is updated.
+//                    Double value = dataSnapshot.getValue(Double.class) - Double.parseDouble(a);
+//                    if (index < 1) {
+//                        balanceRef.setValue(value);
+//                        index++;
+//                    }
+//                    Log.d("DATABASE DEBUGGING", "Value is: " + value);
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError error) {
+//                    // Failed to read value
+//                    Log.w("DATABASE DEBUGGING", "Failed to read value.", error.toException());
+//                }
+//            });
+//            index = 0;
+////            startActivity(intent);
 
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            String firebaseUsername = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            DatabaseReference myRef = database.getReference("users/" + firebaseUsername).child("transactions");
-            myRef.child(currentDate + "=Split=").setValue("- " + String.valueOf(money_to.getText()));
-            final String a = String.valueOf(money_to.getText());
-            final DatabaseReference balanceRef = database.getReference("users/" + firebaseUsername).child("balance");
-            balanceRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    Double value = dataSnapshot.getValue(Double.class) - Double.parseDouble(a);
-                    if (index < 1) {
-                        balanceRef.setValue(value);
-                        index++;
-                    }
-                    Log.d("DATABASE DEBUGGING", "Value is: " + value);
+            FirebaseUser mUser=FirebaseAuth.getInstance().getCurrentUser();
+            String uid=mUser.getUid();
+            mExpenseDatabase=FirebaseDatabase.getInstance().getReference().child("ExpenseDatabase").child(uid);
+            String id=mExpenseDatabase.push().getKey();
+            String mDate= DateFormat.getDateInstance().format(new Date());
+            Data data=new Data(Double.parseDouble(money_to.getText().toString()),"Split","Split",id,mDate);
+            mExpenseDatabase.child(id).setValue(data);
+            balanceRef.setValue(Double.parseDouble(balanceInvi.getText().toString()) - Double.parseDouble(money_to.getText().toString()));
+            Intent intent = new Intent(getContext(), ChooseUserActivity.class);
+            intent.putExtra("addMoney", money_to.getText().toString());
+            startActivity(intent);
 
-                }
-
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-                    Log.w("DATABASE DEBUGGING", "Failed to read value.", error.toException());
-                }
-            });
-            index = 0;
-//            startActivity(intent);
         }
     }
 }

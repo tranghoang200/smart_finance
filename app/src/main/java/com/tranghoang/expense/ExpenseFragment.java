@@ -60,7 +60,7 @@ public class ExpenseFragment extends Fragment {
 
     private String type;
     private String note;
-    private int ammount;
+    private double ammount;
 
     private String post_key;
 
@@ -178,7 +178,7 @@ public class ExpenseFragment extends Fragment {
             mNote.setText(note);
         }
 
-        private void setAmmount(int ammount){
+        private void setAmmount(double ammount){
             TextView mAAmmount=mView.findViewById(R.id.ammount_txt_expense);
 
             String strammount=String.valueOf(ammount);

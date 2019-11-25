@@ -63,7 +63,7 @@ public class IncomeFragment extends Fragment {
 
     private String type;
     private String note;
-    private int amount;
+    private double amount;
 
     private String post_key;
 
@@ -193,7 +193,7 @@ public class IncomeFragment extends Fragment {
             mDate.setText(date);
         }
 
-        private void setAmmount(int ammount){
+        private void setAmmount(double ammount){
 
             TextView mAmmount=mView.findViewById(R.id.ammount_txt_income);
             String stammount=String.valueOf(ammount);

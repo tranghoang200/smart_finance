@@ -30,4 +30,6 @@
     <string name="exit">Exit</string>
     <string name="title">Title</string>
 
+    <string name="noti">Notification</string>
+
 </resources>
