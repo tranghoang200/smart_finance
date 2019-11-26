@@ -39,11 +39,8 @@ public class SplitFragment extends Fragment {
     public EditText money_to;
     public EditText money_from;
     public EditText people;
-    public Spinner cat;
     public Button split;
-    private Button exit;
     public Button add;
-    private int index;
 
     private DatabaseReference mExpenseDatabase;
     DatabaseReference balanceRef;
@@ -66,22 +63,11 @@ public class SplitFragment extends Fragment {
         people = (EditText) myview.findViewById(R.id.num_people_input);
 //        cat = (Spinner) findViewById(R.id.split_types);
         split = (Button) myview.findViewById(R.id.splitButton);
-        exit = (Button) myview.findViewById(R.id.exit_button);
         add = (Button) myview.findViewById(R.id.addButton);
-        index = 0;
         split.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 split(view);
-
-            }
-        });
-
-        exit.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                exit(view);
 
             }
         });
@@ -130,10 +116,6 @@ public class SplitFragment extends Fragment {
 
     }
 
-    public void exit(View view){
-//        Intent intent = new Intent(this, DashBoardFragment.class);
-//        startActivity(intent);
-    }
 
     public void add(View view){
         final Context text=getContext();
@@ -149,46 +131,11 @@ public class SplitFragment extends Fragment {
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-//                    finish();
                 }
             });
             builder.show();
-//            Intent intent = new Intent(this, Expense.class);
-//            startActivity(intent);
 
         } else {
-//            String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-////            Intent intent = new Intent(this, MainChatActivity.class);
-//
-//            FirebaseDatabase database = FirebaseDatabase.getInstance();
-//            String firebaseUsername = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//            DatabaseReference myRef = database.getReference("users/" + firebaseUsername).child("transactions");
-//            myRef.child(currentDate + "=Split=").setValue("- " + String.valueOf(money_to.getText()));
-//            final String a = String.valueOf(money_to.getText());
-//            final DatabaseReference balanceRef = database.getReference("users/" + firebaseUsername).child("balance");
-//            balanceRef.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    // This method is called once with the initial value and again
-//                    // whenever data at this location is updated.
-//                    Double value = dataSnapshot.getValue(Double.class) - Double.parseDouble(a);
-//                    if (index < 1) {
-//                        balanceRef.setValue(value);
-//                        index++;
-//                    }
-//                    Log.d("DATABASE DEBUGGING", "Value is: " + value);
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError error) {
-//                    // Failed to read value
-//                    Log.w("DATABASE DEBUGGING", "Failed to read value.", error.toException());
-//                }
-//            });
-//            index = 0;
-////            startActivity(intent);
-
             FirebaseUser mUser=FirebaseAuth.getInstance().getCurrentUser();
             String uid=mUser.getUid();
             mExpenseDatabase=FirebaseDatabase.getInstance().getReference().child("ExpenseDatabase").child(uid);

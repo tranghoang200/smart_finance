@@ -24,16 +24,15 @@
         />
 
     <TextView
+        android:id="@+id/ammoun_income_ds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:padding="5dp"
         android:text="Ammount:"
-        android:textColor="@color/income_coloer"
-        android:layout_marginTop="10dp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:id="@+id/ammoun_income_ds"
-        />
+        android:textColor="#3F51B5" />
 
     <TextView
         android:layout_width="match_parent"

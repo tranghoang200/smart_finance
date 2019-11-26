@@ -18,18 +18,21 @@
 
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Balance"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:layout_height="wrap_content"/>
+                android:textColor="#FF9800"
+                android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/balance"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="000.00"
-                android:id="@+id/balance"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:layout_height="wrap_content"/>
+                android:textSize="24sp" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
@@ -59,10 +62,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:textAppearanceLarge"
-                        android:textColor="@android:color/black"
                         android:text="Income"
-                        />
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="#3F51B5"
+                        android:textSize="22sp" />
 
                 </RelativeLayout>
 
@@ -75,10 +78,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Expense"
                         android:textAppearance="?android:textAppearanceLarge"
                         android:textColor="@android:color/holo_red_dark"
-                        android:text="Expense"
-                        />
+                        android:textSize="22sp" />
 
                 </RelativeLayout>
 
@@ -98,13 +101,12 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/income_set_result"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/income_set_result"
-                        android:textAppearance="?android:textAppearanceLarge"
-                        android:textColor="@android:color/black"
                         android:text="000.00"
-                        />
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="#3F51B5" />
 
                 </RelativeLayout>
 
@@ -149,29 +151,32 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
                     android:text="Income:"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:padding="10dp"
-                    />
+                    android:textColor="#F8F4F4"
+                    android:textSize="22sp" />
+
                 <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
                     android:id="@+id/recycler_income"
-                    android:layout_height="200dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp">
 
                 </android.support.v7.widget.RecyclerView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
                     android:text="Expense:"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:padding="10dp"
-                    />
+                    android:textColor="#F7F4F4"
+                    android:textSize="22sp" />
 
                 <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
                     android:id="@+id/recycler_epense"
-                    android:layout_height="200dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp">
 
                 </android.support.v7.widget.RecyclerView>
 
@@ -254,15 +259,16 @@
 
 
         <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
             android:id="@+id/fb_main_plus_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginBottom="16dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="#CDDC39"
             android:backgroundTint="#6A1B9A"
-            app:fabSize="normal"
             android:src="@drawable/income"
-            android:layout_height="wrap_content" />
+            app:fabSize="normal" />
 
 
     </android.support.design.widget.CoordinatorLayout>
