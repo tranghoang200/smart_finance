@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -22,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tranghoang.expense.Model.Data;
-import com.tranghoang.expense.R;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -52,7 +52,7 @@ public class IncomeFragment extends Fragment {
 
     private EditText edtAmmount;
     private EditText edtType;
-    private EditText edtNote;
+    private EditText edtCategory;
 
     //button for update and delete;
 
@@ -62,7 +62,7 @@ public class IncomeFragment extends Fragment {
     //Dtaa item value
 
     private String type;
-    private String note;
+    private String category;
     private double amount;
 
     private String post_key;
@@ -142,7 +142,7 @@ public class IncomeFragment extends Fragment {
             protected void populateViewHolder(MyViewHolder viewHolder, final Data model, final int position) {
 
                 viewHolder.setType(model.getType());
-                viewHolder.setNote(model.getNote());
+                viewHolder.setCategory(model.getCategory());
                 viewHolder.setDate(model.getDate());
                 viewHolder.setAmmount(model.getAmount());
 
@@ -153,7 +153,7 @@ public class IncomeFragment extends Fragment {
                         post_key=getRef(position).getKey();
 
                         type=model.getType();
-                        note=model.getNote();
+                        category =model.getCategory();
                         amount=model.getAmount();
 
                         updateDataItem();
@@ -181,13 +181,6 @@ public class IncomeFragment extends Fragment {
             mType.setText(type);
         }
 
-        private void setNote(String note){
-
-            TextView mNote=mView.findViewById(R.id.note_txt_income);
-            mNote.setText(note);
-
-        }
-
         private void setDate(String date){
             TextView mDate=mView.findViewById(R.id.date_txt_income);
             mDate.setText(date);
@@ -202,6 +195,13 @@ public class IncomeFragment extends Fragment {
         }
 
 
+        public void setCategory(String category) {
+
+            TextView mCategory = mView.findViewById(R.id.category_txt_income);
+            String stCategory =String.valueOf(category);
+            mCategory.setText(stCategory);
+
+        }
     }
 
 
@@ -212,17 +212,17 @@ public class IncomeFragment extends Fragment {
         View myview=inflater.inflate(R.layout.update_data_item,null);
         mydialog.setView(myview);
 
-        edtAmmount=myview.findViewById(R.id.ammount_edt);
+        edtAmmount=myview.findViewById(R.id.amount_edt);
         edtType=myview.findViewById(R.id.type_edt);
-        edtNote=myview.findViewById(R.id.note_edt);
+        edtCategory=myview.findViewById(R.id.category_spinner);
 
         //Set data to edit text..
 
         edtType.setText(type);
         edtType.setSelection(type.length());
 
-        edtNote.setText(note);
-        edtNote.setSelection(note.length());
+        edtCategory.setText(category);
+        edtCategory.setSelection(category.length());
 
         edtAmmount.setText(String.valueOf(amount));
         edtAmmount.setSelection(String.valueOf(amount).length());
@@ -237,7 +237,7 @@ public class IncomeFragment extends Fragment {
             public void onClick(View view) {
 
                 type=edtType.getText().toString().trim();
-                note=edtNote.getText().toString().trim();
+                category=edtCategory.getText().toString().trim();
 
                 String mdammount=String.valueOf(amount);
 
@@ -247,7 +247,7 @@ public class IncomeFragment extends Fragment {
 
                 String mDate= DateFormat.getDateInstance().format(new Date());
 
-                Data data=new Data(myAmmount,type,note,post_key,mDate);
+                Data data=new Data(myAmmount,type,category,post_key,mDate);
 
                 mIncomeDatabase.child(post_key).setValue(data);
 

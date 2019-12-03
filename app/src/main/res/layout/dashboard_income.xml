@@ -14,14 +14,24 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/type_Income_ds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Type;"
         android:gravity="center"
-        android:textColor="@color/nav_header"
-        android:id="@+id/type_Income_ds"
+        android:text="Name"
         android:textAppearance="?android:textAppearanceLarge"
-        />
+        android:textColor="@color/nav_header"
+        android:textSize="19sp" />
+
+    <TextView
+        android:id="@+id/category_income_ds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Category"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/ammoun_income_ds"
@@ -29,8 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:padding="5dp"
-        android:text="Ammount:"
+        android:text="Amount:"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="#3F51B5" />
 
@@ -40,7 +49,6 @@
         android:text="10 June 2018"
         android:textAppearance="?android:textAppearanceMedium"
         android:gravity="center"
-        android:padding="5dp"
         android:id="@+id/date_income_ds"
         android:textColor="@color/income_coloer"
         android:layout_marginTop="10dp"

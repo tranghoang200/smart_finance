@@ -21,7 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tranghoang.expense.R;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -49,9 +48,9 @@ public class ExpenseFragment extends Fragment {
 
     //Edt data item;
 
-    private EditText edtAmmount;
+    private EditText edtAmount;
     private EditText edtType;
-    private EditText edtNote;
+    private EditText edtCategory;
 
     private Button btnUpdate;
     private Button btnDelete;
@@ -59,7 +58,7 @@ public class ExpenseFragment extends Fragment {
     //Data variable..
 
     private String type;
-    private String note;
+    private String category;
     private double ammount;
 
     private String post_key;
@@ -133,7 +132,7 @@ public class ExpenseFragment extends Fragment {
 
                 viewHolder.setDate(model.getDate());
                 viewHolder.setType(model.getType());
-                viewHolder.setNote(model.getNote());
+                viewHolder.setCategory(String.valueOf(model.getCategory()));
                 viewHolder.setAmmount(model.getAmount());
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +141,7 @@ public class ExpenseFragment extends Fragment {
 
                         post_key=getRef(position).getKey();
                         type=model.getType();
-                        note=model.getNote();
+                        category=String.valueOf(model.getCategory());
                         ammount=model.getAmount();
 
                         updateDataItem();
@@ -173,13 +172,13 @@ public class ExpenseFragment extends Fragment {
             mType.setText(type);
         }
 
-        private void setNote(String note){
-            TextView mNote=mView.findViewById(R.id.note_txt_expense);
-            mNote.setText(note);
+        private void setCategory(String category){
+            TextView mNote=mView.findViewById(R.id.cat_txt_expense);
+            mNote.setText(category);
         }
 
         private void setAmmount(double ammount){
-            TextView mAAmmount=mView.findViewById(R.id.ammount_txt_expense);
+            TextView mAAmmount=mView.findViewById(R.id.amount_txt_expense);
 
             String strammount=String.valueOf(ammount);
 
@@ -197,19 +196,16 @@ public class ExpenseFragment extends Fragment {
         View myview=inflater.inflate(R.layout.update_data_item,null);
         mydialog.setView(myview);
 
-        edtAmmount=myview.findViewById(R.id.ammount_edt);
-        edtNote=myview.findViewById(R.id.note_edt);
+        edtAmount=myview.findViewById(R.id.amount_edt);
+        edtCategory= myview.findViewById(R.id.category_spinner);
+        edtCategory.setText(category);
+
         edtType=myview.findViewById(R.id.type_edt);
-
-
         edtType.setText(type);
         edtType.setSelection(type.length());
 
-        edtNote.setText(note);
-        edtNote.setSelection(note.length());
-
-        edtAmmount.setText(String.valueOf(ammount));
-        edtAmmount.setSelection(String.valueOf(ammount).length());
+        edtAmount.setText(String.valueOf(ammount));
+        edtAmount.setSelection(String.valueOf(ammount).length());
 
 
 
@@ -223,13 +219,13 @@ public class ExpenseFragment extends Fragment {
             public void onClick(View view) {
 
                 type=edtType.getText().toString().trim();
-                note=edtNote.getText().toString().trim();
+                category = edtCategory.getText().toString().trim();
                 String stammount=String.valueOf(ammount);
-                stammount=edtAmmount.getText().toString().trim();
+                stammount=edtAmount.getText().toString().trim();
                 int intamount=Integer.parseInt(stammount);
                 String mDate= DateFormat.getDateInstance().format(new Date());
 
-                Data data=new Data(intamount,type,note,post_key,mDate);
+                Data data=new Data(intamount,type,category,post_key,mDate);
                 mExpenseDatabase.child(post_key).setValue(data);
 
                 dialog.dismiss();

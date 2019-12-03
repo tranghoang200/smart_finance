@@ -8,6 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.tranghoang.expense.Model.Data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -31,80 +37,84 @@ import lecho.lib.hellocharts.view.PieChartView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChartFragment extends Fragment {
+public class ChartFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     ArrayList<Double> expense;
     ArrayList<Double> income;
+    String[] category;
+    int itemCount;
     Double sum;
     double expenseSum;
     double incomeSum;
     private FirebaseAuth mAuth;
     private DatabaseReference mExpenseDatabase;
     private DatabaseReference mIncomeDatabase;
+    private int foodExpense,travelExpense,clothesExpense,moviesExpense,groceryExpense,otherExpense;
 
     String uid;
-    HashMap<String, Double> cat;
-    ArrayList<String> list;
+    Spinner spinner;
     PieChartView pieChartView;
     PieChartView pieChartView_cat;
+
     public ChartFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myview =  inflater.inflate(R.layout.fragment_chart, container, false);
+        View myview = inflater.inflate(R.layout.fragment_chart, container, false);
 
         expense = new ArrayList<Double>();
         income = new ArrayList<Double>();
-        cat=new HashMap();
-        list=new ArrayList<>();
 
-        expenseSum=0.0;
-        incomeSum=0.0;
-        sum=0.0;
+        spinner = myview.findViewById(R.id.category_spinner);
+        spinner.setOnItemSelectedListener(this);
+
+        category = getResources().getStringArray(R.array.categories_array);
+
+        // list=new ArrayList<>();
+
+        expenseSum = 0.0;
+        incomeSum = 0.0;
+        sum = 0.0;
 
         pieChartView = myview.findViewById(R.id.chart);
         pieChartView_cat = myview.findViewById(R.id.chart_cat);
 
+        mAuth = FirebaseAuth.getInstance();
 
-        mAuth=FirebaseAuth.getInstance();
-
-        FirebaseUser mUser=mAuth.getCurrentUser();
-        uid=mUser.getUid();
-        mExpenseDatabase= FirebaseDatabase.getInstance().getReference().child("ExpenseDatabase").child(uid);
+        FirebaseUser mUser = mAuth.getCurrentUser();
+        uid = mUser.getUid();
+        mExpenseDatabase = FirebaseDatabase.getInstance().getReference().child("ExpenseDatabase").child(uid);
 
         mExpenseDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                for (DataSnapshot mysanapshot : dataSnapshot.getChildren()) {
 
-
-                for (DataSnapshot mysanapshot:dataSnapshot.getChildren()){
-
-                    Data data=mysanapshot.getValue(Data.class);
+                    Data data = mysanapshot.getValue(Data.class);
                     expense.add((double) data.getAmount());
-                    sum+=(double) data.getAmount();
+                    category = getResources().getStringArray(R.array.categories_array);
+                    sum += (double) data.getAmount();
 
                 }
-                mIncomeDatabase= FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
+                mIncomeDatabase = FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
 
                 mIncomeDatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
+                        for (DataSnapshot mysanapshot : dataSnapshot.getChildren()) {
 
-
-                        for (DataSnapshot mysanapshot:dataSnapshot.getChildren()){
-
-                            Data data=mysanapshot.getValue(Data.class);
+                            Data data = mysanapshot.getValue(Data.class);
                             income.add((double) data.getAmount());
-                            sum+=(double) data.getAmount();
+                            sum += (double) data.getAmount();
 
                         }
                         drawchart(expense, income);
+                        cat(category, itemCount);
 
 
                     }
@@ -137,8 +147,8 @@ public class ChartFragment extends Fragment {
             sum_income += income.get(i);
         }
         Log.i("sum_income", String.valueOf(sum_income));
-        int expense_percent = (int) Math.round((sum_expense *100) / sum);
-        int income_percent = (int) Math.round((sum_income *100) / sum);
+        int expense_percent = (int) Math.round((sum_expense * 100) / sum);
+        int income_percent = (int) Math.round((sum_income * 100) / sum);
         Log.i("percent", String.valueOf(expense_percent) + " " + String.valueOf(income_percent));
 
 
@@ -151,18 +161,84 @@ public class ChartFragment extends Fragment {
         pieChartView.setPieChartData(pieChartData);
     }
 
-    public void drawcat(HashMap<String,Double> cat) {
-        int value=0;
-        List<SliceValue> pieData_cat = new ArrayList<>();
-        PieChartData pieChartData_cat = new PieChartData(pieData_cat);
-        for (String key: cat.keySet()){
-            Random rnd = new Random();
-            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-            value=(int) Math.round((cat.get(key)*100)/sum);
-            pieData_cat.add(new SliceValue(value, color).setLabel(key));
-        }
-        pieChartData_cat.setHasLabels(true);
-        pieChartView_cat.setPieChartData(pieChartData_cat);
+    private void setupSpinner() {
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.categories_array,
+                android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
     }
 
+
+
+    public void cat(String[] category, int itemCount) {
+
+        HashMap<String, Integer> mp = new HashMap<>();
+
+        // Traverse through array elements and
+        // count frequencies
+        int cat = category.length;
+        List<SliceValue> categories = new ArrayList<>();
+        PieChartData pieChartData = new PieChartData(categories);
+
+        for (int i = 0; i < cat; i++) {
+            if (mp.containsKey(category[i])) {
+                mp.put(category[i], mp.get(category[i]) + 1);
+            } else {
+                mp.put(category[i], 1);
+            }
+        }
+        for (HashMap.Entry<String, Integer> entry : mp.entrySet()) {
+            itemCount = entry.getValue();
+        }
+        Log.i("categories count", String.valueOf(itemCount));
+        int cat_percent = (int) Math.round((itemCount * 100) / cat);
+        if (categories != null) {
+            if (categories.equals(category[0])) {
+                categories.add(new SliceValue(cat_percent, Color.BLUE).setLabel("Food and Drinks"));
+            }
+            if (categories.equals(category[1])) {
+                categories.add(new SliceValue(cat_percent, Color.RED).setLabel("Shopping"));
+            }
+            if (categories.equals(category[2])) {
+                categories.add(new SliceValue(cat_percent, Color.MAGENTA).setLabel("Public Transport"));
+            }
+            if (categories.equals(category[3])) {
+                categories.add(new SliceValue(cat_percent, Color.GREEN).setLabel("Groceries"));
+            }
+            if (categories.equals(category[3])) {
+                categories.add(new SliceValue(cat_percent, Color.WHITE).setLabel("Education"));
+            }
+            if (categories.equals(category[4])) {
+                categories.add(new SliceValue(cat_percent, Color.WHITE).setLabel("Investment"));
+            }
+            if (categories.equals(category[5])) {
+                categories.add(new SliceValue(cat_percent, Color.WHITE).setLabel("Loan"));
+            }
+            if (categories.equals(category[6])) {
+                categories.add(new SliceValue(cat_percent, Color.WHITE).setLabel("Entertainment"));
+            }
+            if (categories.equals(category[7])) {
+                categories.add(new SliceValue(cat_percent, Color.WHITE).setLabel("Personal Care"));
+            }
+            if (categories.equals(category[8])) {
+                categories.add(new SliceValue(cat_percent, Color.WHITE).setLabel("Other"));
+            }
+        }
+
+        pieChartData.setHasLabels(true);
+       pieChartData.setHasCenterCircle(true).setCenterText1("Categories expense").setCenterText1FontSize(10).setCenterText1Color(Color.parseColor("#0097A7"));
+       pieChartView_cat.setPieChartData(pieChartData);
+
+        }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

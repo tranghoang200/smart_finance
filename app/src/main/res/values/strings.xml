@@ -32,4 +32,27 @@
 
     <string name="noti">Notification</string>
 
+    <string name="category_spinner">Categories</string>
+    <string-array name="categories_array">
+        <item>Food and Drinks</item>
+        <item>Shopping</item>
+        <item>Public Transport</item>
+        <item>Groceries</item>
+        <item>Investment</item>
+        <item>Loan</item>
+        <item>Public Transport</item>
+        <item>Entertainment</item>
+        <item>Personal Care</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="category_spinner2">Categories</string>
+    <string-array name="categories_income_array">
+        <item>Deposits</item>
+        <item>Investments</item>
+        <item>Refunds</item>
+        <item>Salaries</item>
+        <item>Other Income</item>
+    </string-array>
+
 </resources>

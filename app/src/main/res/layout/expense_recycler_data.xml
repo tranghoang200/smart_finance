@@ -46,19 +46,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="Type"
+                android:text="Name"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/note_txt_expense"
+                android:id="@+id/cat_txt_expense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/type_txt_expense"
                 android:maxLines="1"
-                android:text="Note"
+                android:text="Category"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -72,10 +72,10 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/ammount_txt_expense"
+                android:id="@+id/amount_txt_expense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ammount"
+                android:text="amount"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/expense_ammount_color"
                 android:textSize="18sp"

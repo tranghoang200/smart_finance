@@ -1,19 +1,26 @@
 package com.tranghoang.expense.Model;
 
+
+import android.widget.Spinner;
+
 public class Data {
 
     private double amount;
     private String type;
-    private String note;
+    private String category;
     private String id;
 
-    public Data(double amount, String type, String note, String id, String date) {
+    public Data() {
+    }
+
+    public Data(double amount, String type, String category, String id, String date) {
         this.amount = amount;
         this.type = type;
-        this.note = note;
+        this.category = category;
         this.id = id;
         this.date = date;
     }
+
 
     public double getAmount() {
         return amount;
@@ -31,13 +38,6 @@ public class Data {
         this.type = type;
     }
 
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
 
     public String getId() {
         return id;
@@ -57,9 +57,7 @@ public class Data {
 
     private String date;
 
-    public Data(){
+    public void setCategory(String category){this.category = category;}
 
-    }
-
-
+    public String getCategory() { return category; }
 }

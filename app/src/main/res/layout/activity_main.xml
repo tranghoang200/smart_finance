@@ -29,40 +29,37 @@
                 />
 
             <EditText
+                android:id="@+id/email_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="Email:"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
                 android:background="@drawable/edittext_background"
+                android:hint="Email:"
                 android:padding="15dp"
-                android:id="@+id/email_login"
-                />
+                android:textColor="@android:color/white"
+                android:textColorHint="#777171" />
 
             <EditText
+                android:id="@+id/password_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:padding="15dp"
-                android:inputType="textPassword"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
                 android:background="@drawable/edittext_background"
                 android:hint="Password:"
-                android:id="@+id/password_login"
-                />
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="#9C8282" />
 
             <Button
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Log In"
                 android:background="@drawable/edittext_background"
-                android:textColor="@android:color/white"
-                android:id="@+id/btn_login"
+                android:text="Log In"
                 android:textAppearance="?android:textAppearanceMedium"
-                />
+                android:textColor="#615858" />
 
             <TextView
                 android:layout_width="match_parent"

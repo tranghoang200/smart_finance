@@ -2,22 +2,23 @@ package com.tranghoang.expense;
 
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,13 +30,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tranghoang.expense.R;
+import com.tranghoang.expense.Model.Data;
 
 import java.text.DateFormat;
 import java.util.Date;
 
-import com.tranghoang.expense.Model.Data;
-
+import static android.text.TextUtils.isEmpty;
+import static android.widget.AdapterView.*;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -122,7 +125,8 @@ public class DashBoardFragment extends Fragment {
                 // Failed to read value
                 Log.w("DATABASE DEBUGGING", "Failed to read value.", error.toException());
             }
-        });
+        }
+        );
 
 
         mIncomeDatabase= FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
@@ -262,15 +266,14 @@ public class DashBoardFragment extends Fragment {
 
         // Read from the database
         balanceRef.addValueEventListener(new ValueEventListener() {
-                                             @Override
-                                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                                 // This method is called once with the initial value and again
-                                                 // whenever data at this location is updated.
-                                                 Double value = dataSnapshot.getValue(Double.class);
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                Double value = dataSnapshot.getValue(Double.class);
 
-                                                 totalBalance.setText(String.valueOf(value));
-                                                 Log.d("DATABASE DEBUGGING", "Value is: " + value);
-
+                totalBalance.setText(String.valueOf(value));
+                Log.d("DATABASE DEBUGGING", "Value is: " + value);
                                              }
 
             @Override
@@ -366,52 +369,51 @@ public class DashBoardFragment extends Fragment {
 
         AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
         LayoutInflater inflater=LayoutInflater.from(getActivity());
-        View myviewm=inflater.inflate(R.layout.custom_layout_for_insertdata,null);
+        View myviewm=inflater.inflate(R.layout.custom_layout_for_income,null);
         mydialog.setView(myviewm);
         final AlertDialog dialog=mydialog.create();
 
         dialog.setCancelable(false);
 
 
-        final EditText edtAmmount=myviewm.findViewById(R.id.ammount_edt);
+        final EditText edtAmount=myviewm.findViewById(R.id.amount_edt);
         final EditText edtType=myviewm.findViewById(R.id.type_edt);
-        final EditText edtNote=myviewm.findViewById(R.id.note_edt);
+        final Spinner incomeCategory  = myviewm.findViewById(R.id.category_spinner2);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.categories_income_array,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        incomeCategory.setAdapter(adapter);
+        incomeCategory.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
         Button btnSave=myviewm.findViewById(R.id.btnSave);
-        Button btnCansel=myviewm.findViewById(R.id.btnCancel);
+        Button btnCancel=myviewm.findViewById(R.id.btnCancel);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String type=edtType.getText().toString().trim();
-                String ammount=edtAmmount.getText().toString().trim();
-                String note=edtNote.getText().toString().trim();
+                String type= edtType.getText().toString().trim();
+                String amount= edtAmount.getText().toString().trim();
+                String category = incomeCategory.getSelectedItem().toString().trim();
 
-                if (TextUtils.isEmpty(type)){
+                if (isEmpty(type)){
                     edtType.setError("Required Field..");
                     return;
                 }
 
-                if (TextUtils.isEmpty(ammount)){
-                    edtAmmount.setError("Required Field..");
+                if (isEmpty(amount)){
+                    edtAmount.setError("Required Field..");
                     return;
                 }
 
-                int ourammontint=Integer.parseInt(ammount);
+                int ourAmountInt= Integer.parseInt(amount);
 
-                if (TextUtils.isEmpty(note)){
-                    edtNote.setError("Required Field..");
-                    return;
-                }
-
-                String id=mIncomeDatabase.push().getKey();
+                String id= mIncomeDatabase.push().getKey();
 
                 String mDate=DateFormat.getDateInstance().format(new Date());
 
-                Data data=new Data(ourammontint,type,note,id,mDate);
+                Data data= new Data(ourAmountInt,type,category,id,mDate);
 
-                balanceRef.setValue(balanceInit + ourammontint);
+                balanceRef.setValue(balanceInit + ourAmountInt);
 
                 mIncomeDatabase.child(id).setValue(data);
 
@@ -423,7 +425,7 @@ public class DashBoardFragment extends Fragment {
             }
         });
 
-        btnCansel.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ftAnimation();
@@ -445,9 +447,13 @@ public class DashBoardFragment extends Fragment {
 
        dialog.setCancelable(false);
 
-        final EditText ammount=myview.findViewById(R.id.ammount_edt);
-        final EditText type=myview.findViewById(R.id.type_edt);
-        final EditText note=myview.findViewById(R.id.note_edt);
+        final EditText amount=myview.findViewById(R.id.amount_edt);
+        final EditText name =myview.findViewById(R.id.type_edt);
+        final Spinner expenseCategory =myview.findViewById(R.id.category_spinner);
+        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.categories_array,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        expenseCategory.setAdapter(adapter);
+        expenseCategory.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
         Button btnSave=myview.findViewById(R.id.btnSave);
         Button btnCansel=myview.findViewById(R.id.btnCancel);
@@ -456,24 +462,25 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String tmAmmount=ammount.getText().toString().trim();
-                String tmtype=type.getText().toString().trim();
-                String tmnote=note.getText().toString().trim();
+                String tmAmount= amount.getText().toString().trim();
+                String tmName=  name.getText().toString().trim();
+                String tmCategory = expenseCategory.getSelectedItem().toString().trim();
 
-                if (TextUtils.isEmpty(tmAmmount)){
-                    ammount.setError("Required Field..");
+                if (isEmpty(tmAmount)){
+                    amount.setError("Required Field..");
                     return;
                 }
 
-                int inamount=Integer.parseInt(tmAmmount);
+                int intAmount=Integer.parseInt(tmAmount);
 
-                if (TextUtils.isEmpty(tmtype)){
-                    type.setError("Required Field..");
+                if (isEmpty(tmName)){
+                    name.setError("Required Field..");
                     return;
                 }
 
-                if (TextUtils.isEmpty(tmnote)){
-                    note.setError("Required Field..");
+                if (isEmpty(tmCategory)){
+                    expenseCategory.setAdapter(adapter);
+                    expenseCategory.setOnItemSelectedListener(new CustomOnItemSelectedListener());
                     return;
                 }
 
@@ -481,8 +488,8 @@ public class DashBoardFragment extends Fragment {
                 String id=mExpenseDatabase.push().getKey();
                 String mDate=DateFormat.getDateInstance().format(new Date());
 
-                Data data=new Data(inamount,tmtype,tmnote,id,mDate);
-                balanceRef.setValue(balanceInit - inamount);
+                Data data = new Data(intAmount,tmName,tmCategory,id,mDate);
+                balanceRef.setValue(balanceInit - intAmount);
                 mExpenseDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(),"Data added",Toast.LENGTH_SHORT).show();
 
@@ -523,6 +530,7 @@ public class DashBoardFragment extends Fragment {
                 viewHolder.setIncomeType(model.getType());
                 viewHolder.setIncomeAmmount(model.getAmount());
                 viewHolder.setIncomeDate(model.getDate());
+                viewHolder.setIncomeCategory(model.getCategory());
 
             }
         };
@@ -532,7 +540,7 @@ public class DashBoardFragment extends Fragment {
         FirebaseRecyclerAdapter<Data,ExpenseViewHolder>expenseAdapter=new FirebaseRecyclerAdapter<Data, ExpenseViewHolder>
                 (
                         Data.class,
-                        R.layout.dashboart_expense,
+                        R.layout.dashboard_expense,
                         DashBoardFragment.ExpenseViewHolder.class,
                         mExpenseDatabase
                 ) {
@@ -542,6 +550,7 @@ public class DashBoardFragment extends Fragment {
                 viewHolder.setExpenseType(model.getType());
                 viewHolder.setExpenseAmmount(model.getAmount());
                 viewHolder.setExpenseDate(model.getDate());
+                viewHolder.setExpenseCategory(model.getCategory());
 
             }
         };
@@ -549,6 +558,7 @@ public class DashBoardFragment extends Fragment {
         mRecyclerExpense.setAdapter(expenseAdapter);
 
     }
+
 
     //For Income Data
 
@@ -582,6 +592,13 @@ public class DashBoardFragment extends Fragment {
 
         }
 
+        public void setIncomeCategory (String categoryIncome){
+
+            TextView mDate=mIncomeView.findViewById(R.id.category_income_ds);
+            mDate.setText(categoryIncome);
+
+        }
+
     }
 
     //For expense data..
@@ -598,6 +615,11 @@ public class DashBoardFragment extends Fragment {
         public void setExpenseType(String type){
             TextView mtype=mExpenseView.findViewById(R.id.type_expense_ds);
             mtype.setText(type);
+        }
+
+        public void setExpenseCategory(String category){
+            TextView mCategory=mExpenseView.findViewById(R.id.category_expense_ds);
+            mCategory.setText(category);
         }
 
         public void setExpenseAmmount(double ammount){

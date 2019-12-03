@@ -21,16 +21,16 @@
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
+                    android:layout_weight="1"
+                    android:gravity="center">
 
                     <TextView
+                        android:id="@+id/amount_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AMOUNT:"
-                        />
+                        android:text="Amount" />
 
                 </RelativeLayout>
 
@@ -43,7 +43,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ammount_edt"
+                        android:id="@+id/amount_edt"
                         />
 
                 </RelativeLayout>
@@ -63,10 +63,10 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/name_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TYPE:"
-                        />
+                        android:text="Name:" />
 
                 </RelativeLayout>
 
@@ -88,35 +88,34 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
+                    android:layout_weight="1"
+                    android:gravity="center">
 
                     <TextView
+                        android:id="@+id/cat_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NOTE:"
-                        />
+                        android:text="Category:" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:layout_height="wrap_content">
+                    android:layout_weight="2">
 
-                    <EditText
+                    <Spinner
+                        android:id="@+id/category_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/note_edt"
-                        />
+                        android:layout_height="wrap_content" />
 
                 </RelativeLayout>
 

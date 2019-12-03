@@ -14,41 +14,47 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Type;"
-            android:gravity="center"
-            android:textColor="@color/nav_header"
             android:id="@+id/type_expense_ds"
-            android:textAppearance="?android:textAppearanceLarge"
-            />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="5dp"
-            android:text="Ammount:"
-            android:textColor="@color/expense_ammount_color"
-            android:layout_marginTop="10dp"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:id="@+id/ammoun_expense_ds"
-            />
+            android:text="Type:"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/nav_header"
+            android:textSize="19sp" />
 
         <TextView
+            android:id="@+id/category_expense_ds"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Category"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/colorPrimary"
+            android:textIsSelectable="false"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/ammoun_expense_ds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Amount:"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/expense_ammount_color" />
+
+        <TextView
+            android:id="@+id/date_expense_ds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="10 June 2018"
             android:textAppearance="?android:textAppearanceMedium"
-            android:gravity="center"
-            android:padding="5dp"
-            android:id="@+id/date_expense_ds"
-            android:textColor="@color/income_coloer"
-            android:layout_marginTop="10dp"
-            />
+            android:textColor="@color/income_coloer" />
 
 
     </LinearLayout>
-
 
 </android.support.v7.widget.CardView>

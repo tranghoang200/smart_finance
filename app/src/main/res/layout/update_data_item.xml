@@ -43,7 +43,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ammount_edt"
+                        android:id="@+id/amount_edt"
                         />
 
                 </RelativeLayout>
@@ -101,8 +101,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NOTE:"
-                        />
+                        android:text="Category" />
 
                 </RelativeLayout>
 
@@ -112,11 +111,10 @@
                     android:layout_margin="10dp"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <Spinner
+                        android:id="@+id/category_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/note_edt"
-                        />
+                        android:layout_height="wrap_content" />
 
                 </RelativeLayout>
 
