@@ -3,6 +3,7 @@ package com.tranghoang.expense;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,7 +33,20 @@ import java.util.Random;
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.formatter.DefaultValueFormatter;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -114,7 +128,7 @@ public class ChartFragment extends Fragment implements AdapterView.OnItemSelecte
 
                         }
                         drawchart(expense, income);
-                        cat(category, itemCount);
+                        //cat(category, itemCount);
 
 
                     }
@@ -172,7 +186,7 @@ public class ChartFragment extends Fragment implements AdapterView.OnItemSelecte
 
 
     public void cat(String[] category, int itemCount) {
-
+        category = getResources().getStringArray(R.array.categories_array);
         HashMap<String, Integer> mp = new HashMap<>();
 
         // Traverse through array elements and
@@ -193,8 +207,8 @@ public class ChartFragment extends Fragment implements AdapterView.OnItemSelecte
         }
         Log.i("categories count", String.valueOf(itemCount));
         int cat_percent = (int) Math.round((itemCount * 100) / cat);
-        if (categories != null) {
-            if (categories.equals(category[0])) {
+
+        if (categories.equals(category[0])) {
                 categories.add(new SliceValue(cat_percent, Color.BLUE).setLabel("Food and Drinks"));
             }
             if (categories.equals(category[1])) {
@@ -224,9 +238,7 @@ public class ChartFragment extends Fragment implements AdapterView.OnItemSelecte
             if (categories.equals(category[8])) {
                 categories.add(new SliceValue(cat_percent, Color.WHITE).setLabel("Other"));
             }
-        }
-
-        pieChartData.setHasLabels(true);
+            pieChartData.setHasLabels(true);
        pieChartData.setHasCenterCircle(true).setCenterText1("Categories expense").setCenterText1FontSize(10).setCenterText1Color(Color.parseColor("#0097A7"));
        pieChartView_cat.setPieChartData(pieChartData);
 

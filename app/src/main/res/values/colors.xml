@@ -18,6 +18,7 @@
     <color name="date_color">#FF270648</color>
 
     <color name="expense_ammount_color">#FFEC1D06</color>
+    <color name="color">#3129E8</color>
 
 
 </resources>

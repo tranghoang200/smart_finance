@@ -22,11 +22,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registration"
-                android:textColor="@android:color/white"
-                android:textAppearance="?android:textAppearanceLarge"
+                android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
-                />
+                android:text="Create your account now."
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="#191A19" />
 
             <EditText
                 android:id="@+id/email_reg"
@@ -53,23 +53,27 @@
 
             <Button
                 android:id="@+id/btn_reg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="384dp"
+                android:layout_height="38dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/edittext_background"
-                android:text="Registration"
+                android:background="@android:color/white"
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp"
+                android:text="Sign Up"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#666363" />
+                android:textColor="#FFFFFF"
+                android:topLeftRadius="10dp"
+                android:topRightRadius="10dp"
+                tools:background="@drawable/mybutton" />
 
             <TextView
+                android:id="@+id/signin_here"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@android:color/white"
-                android:id="@+id/signin_here"
-                android:text="Already have account? Sign in here."
                 android:padding="5dp"
-                />
+                android:text="Already have account? Sign in here."
+                android:textColor="#250288" />
 
         </LinearLayout>
 

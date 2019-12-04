@@ -15,16 +15,16 @@
         android:layout_height="match_parent"/>
 
     <android.support.design.widget.NavigationView
-        android:layout_width="wrap_content"
-        app:itemIconTint="@color/toolbar_color"
-        app:itemTextAppearance="?android:textAppearanceSmall"
-        android:layout_gravity="start"
         android:id="@+id/naView"
-        app:itemTextColor="@color/nav_header"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/navmenu"
         app:headerLayout="@layout/nav_header"
-        android:layout_height="match_parent"/>
+        app:itemIconTint="#768081"
+        app:itemTextAppearance="?android:textAppearanceSmall"
+        app:itemTextColor="#525566"
+        app:menu="@menu/navmenu" />
 
 
 

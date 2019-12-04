@@ -44,15 +44,14 @@
         android:textColor="#3F51B5" />
 
     <TextView
+        android:id="@+id/date_income_ds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:text="10 June 2018"
         android:textAppearance="?android:textAppearanceMedium"
-        android:gravity="center"
-        android:id="@+id/date_income_ds"
-        android:textColor="@color/income_coloer"
-        android:layout_marginTop="10dp"
-        />
+        android:textColor="@color/income_coloer" />
 
 
 </LinearLayout>

@@ -40,11 +40,17 @@ dependencies {
 
     implementation 'com.android.support:support-v4:26.1.0'
 
-    androidTestCompile 'com.android.support:support-annotations:23.3.0'
-    androidTestCompile 'com.android.support.test:runner:0.3'
-    androidTestCompile 'com.android.support.test:rules:0.3'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
+    androidTestImplementation 'com.android.support:support-annotations:23.3.0'
+    androidTestImplementation 'com.android.support.test:runner:0.3'
+    androidTestImplementation 'com.android.support.test:rules:0.3'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2'
     testImplementation 'junit:junit:4.12'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.0.9'
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.5'
 
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.2'

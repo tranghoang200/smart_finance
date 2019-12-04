@@ -21,12 +21,12 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Log In"
-                android:textColor="@android:color/white"
-                android:textAppearance="?android:textAppearanceLarge"
+                android:layout_height="76dp"
+                android:fontFamily="@font/work_sans_medium"
                 android:gravity="center"
-                />
+                android:text="Welcome,  sign in to continue"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#1D0F0F" />
 
             <EditText
                 android:id="@+id/email_login"
@@ -56,29 +56,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/edittext_background"
+                android:background="@drawable/mybutton"
                 android:text="Log In"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#615858" />
+                android:textColor="#F8F8F8" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@android:color/white"
                 android:id="@+id/forget_password"
-                android:text="Forget Password?"
-                android:padding="5dp"
-                />
-            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@android:color/white"
-                android:id="@+id/signup_reg"
-                android:text="Don't have account?Sign up here."
                 android:padding="5dp"
-                />
+                android:text="Forget Password?"
+                android:textColor="#250288" />
+
+            <TextView
+                android:id="@+id/signup_reg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Don't have account?Sign up here."
+                android:textColor="#250288" />
 
         </LinearLayout>
 

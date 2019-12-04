@@ -2,45 +2,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="top"
     android:orientation="vertical"
-    android:background="@drawable/background_color"
-    tools:context="com.tranghoang.expense.BalanceActivity"
-    android:gravity="top">
+    tools:context="com.tranghoang.expense.BalanceActivity">
 
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inform_intro"
         android:layout_margin="15dp"
-        android:textAllCaps="true"
+        android:fontFamily="@font/work_sans_medium"
+        android:text="@string/inform_intro"
+        android:textAllCaps="false"
+        android:textColor="#404042"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <AutoCompleteTextView
+        android:id="@+id/first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/first_name"
+        android:imeOptions="actionNext"
+        android:inputType="textNoSuggestions"
+        android:maxLines="1"
+        android:padding="15dp"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textSize="30sp" />
+        android:textColorHint="#C9C5C5"
+        android:textIsSelectable="false"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/colorPrimary"
-        >
+        android:textColorHint="#616674">
 
         <AutoCompleteTextView
             android:id="@+id/last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:background="@drawable/edittext_background"
+            android:background="#FFFFFF"
             android:hint="@string/last_name"
             android:imeOptions="actionNext"
             android:inputType="textNoSuggestions"
             android:maxLines="1"
             android:padding="15dp"
             android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textIsSelectable="true"
-            android:textSize="25sp"
+            android:textColorHint="#CFC9C9"
+            android:textIsSelectable="false"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </android.support.design.widget.TextInputLayout>
@@ -48,50 +64,30 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/colorPrimary"
-        >
-
-        <AutoCompleteTextView
-            android:id="@+id/first_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/first_name"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:imeOptions="actionNext"
-            android:layout_margin="15dp"
-            android:padding="15dp"
-            android:textColorHint="#FFFFFF"
-            android:inputType="textNoSuggestions"
-            android:background="@drawable/edittext_background"
-            android:maxLines="1"
-            android:textIsSelectable="false"
-            android:textStyle="bold"/>
+        android:textColorHint="#737583">
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/colorPrimary"
-        >
+        android:textColorHint="@color/colorPrimary">
 
         <EditText
             android:id="@+id/balance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/balance"
+            android:layout_margin="15dp"
             android:background="@drawable/edittext_background"
+            android:hint="@string/balance"
             android:imeOptions="actionNext"
-            android:padding="15dp"
             android:importantForAutofill="no"
             android:inputType="numberSigned"
-            android:layout_margin="15dp"
             android:maxLines="1"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:padding="15dp"
+            android:textColor="#CAC8C8"
+            android:textColorHint="#8A8585"
+            android:textSize="18sp" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -103,13 +99,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/work_sans_medium"
         android:onClick="signUp"
         android:padding="15dp"
         android:text="@string/action_finish"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="18sp"
+        tools:text="Next" />
 
     <ProgressBar
         android:id="@+id/progressBar"
