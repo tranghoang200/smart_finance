@@ -137,6 +137,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/mybutton"
+                        android:fontFamily="@font/montserrat"
                         android:text="DELETE"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@android:color/white" />
@@ -155,6 +156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/mybutton"
+                        android:fontFamily="@font/montserrat"
                         android:text="UPDATE"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@android:color/white" />

@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:text="600000"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="@color/date_color"
+                android:textColor="#3F51B5"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

@@ -31,8 +31,8 @@
         android:inputType="textNoSuggestions"
         android:maxLines="1"
         android:padding="15dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#C9C5C5"
+        android:textColor="#3F51B5"
+        android:textColorHint="#3F51B5"
         android:textIsSelectable="false"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -53,8 +53,8 @@
             android:inputType="textNoSuggestions"
             android:maxLines="1"
             android:padding="15dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#CFC9C9"
+            android:textColor="#3F51B5"
+            android:textColorHint="#3F51B5"
             android:textIsSelectable="false"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -85,8 +85,8 @@
             android:inputType="numberSigned"
             android:maxLines="1"
             android:padding="15dp"
-            android:textColor="#CAC8C8"
-            android:textColorHint="#8A8585"
+            android:textColor="#3F51B5"
+            android:textColorHint="#3F51B5"
             android:textSize="18sp" />
 
     </android.support.design.widget.TextInputLayout>
@@ -100,7 +100,7 @@
         android:layout_margin="15dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/mybutton"
-        android:fontFamily="@font/work_sans_medium"
+        android:fontFamily="@font/montserrat"
         android:onClick="signUp"
         android:padding="15dp"
         android:text="@string/action_finish"

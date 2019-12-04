@@ -5,11 +5,11 @@
 
     <lecho.lib.hellocharts.view.PieChartView
         android:id="@+id/chart"
-        android:layout_width="262dp"
-        android:layout_height="308dp" />
+        android:layout_width="match_parent"
+        android:layout_height="270dp" />
 
     <lecho.lib.hellocharts.view.PieChartView
         android:id="@+id/chart_cat"
-        android:layout_width="258dp"
-        android:layout_height="290dp" />
+        android:layout_width="match_parent"
+        android:layout_height="270dp" />
 </LinearLayout>

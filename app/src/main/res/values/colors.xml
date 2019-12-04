@@ -2,18 +2,18 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#e7ea10</color>
+    <color name="colorAccent">#A909A05C</color>
 
     <color name="toolbar_color">#FFAEF509</color>
 
     <color name="nav_header">#FFEAA00C</color>
 
 
-    <color name="dasboard_color">#FF9B6309</color>
+    <color name="dasboard_color">#EAEDEDF8</color>
 
-    <color name="income_coloer">#FF240740</color>
+    <color name="income_coloer">#855EB1</color>
 
-    <color name="expense_color">#FF6C042E</color>
+    <color name="expense_color">#D67491</color>
 
     <color name="date_color">#FF270648</color>
 

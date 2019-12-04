@@ -11,7 +11,10 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:text="@string/noti"
+        android:textColor="#3F51B5"
         android:textSize="30sp" />
 
     <TextView
@@ -19,32 +22,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/amount"
-        android:textSize="20sp" />
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:padding="10dp"/>
 
     <EditText
         android:id="@+id/amountDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:gravity="center"
         android:inputType="numberDecimal"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:layout_margin="10dp"
+        android:padding="10dp"/>
 
 
     <Button
         android:id="@+id/addAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add To your expense" />
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/montserrat"
+        android:padding="10dp"
+        android:text="Approve"
+        android:textColor="#F9FAF5"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/editAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="edit" />
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/montserrat"
+        android:padding="10dp"
+        android:text="edit"
+        android:textColor="#F5EFEF"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/balanceInvi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:gravity="center"
+        android:padding="10dp"/>
 </LinearLayout>

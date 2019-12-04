@@ -137,7 +137,8 @@
                         android:id="@+id/btnCancel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/color"
+                        android:background="@drawable/mybutton"
+                        android:fontFamily="@font/montserrat"
                         android:text="CANCEL"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@android:color/white" />
@@ -155,7 +156,8 @@
                         android:id="@+id/btnSave"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/color"
+                        android:background="@drawable/mybutton"
+                        android:fontFamily="@font/montserrat"
                         android:text="SAVE"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@android:color/white" />

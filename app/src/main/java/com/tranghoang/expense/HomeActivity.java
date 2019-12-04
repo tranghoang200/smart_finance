@@ -72,7 +72,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                     case R.id.dashboard:
                         setFragment(dashBoardFragment);
-                        bottomNavigationView.setItemBackgroundResource(R.color.dasboard_color);
+                        bottomNavigationView.setItemBackgroundResource(R.color.colorAccent);
                         return true;
 
                     case R.id.income:

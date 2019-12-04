@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dasboard_color"
     android:windowSoftInputMode="adjustNothing"
-    android:background="@drawable/background_color"
     tools:context=".ChooseUserActivity">
 
     <com.mancj.materialsearchbar.MaterialSearchBar
@@ -25,8 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:mt_hint="Custom hint"
         app:mt_maxSuggestionsCount="5"
-        app:mt_speechMode="true"
-        />
+        app:mt_speechMode="true" />
 
     <ListView
         android:id="@+id/ListView"
@@ -49,9 +48,10 @@
         android:layout_width="125dp"
         android:layout_height="54dp"
         android:layout_marginBottom="64dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/montserrat"
         android:text="Submit"
-        android:textColor="#FCFAFA"
+        android:textColor="#FBFBFD"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/background_color"
     android:layout_height="match_parent"
+    android:background="@color/dasboard_color"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.tranghoang.expense.RegistrationActivity">
 
     <ScrollView
@@ -15,9 +15,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 android:background="@drawable/edittext_background"
                 android:hint="Email:"
                 android:padding="15dp"
-                android:textColor="#5F5D5D"
+                android:textColor="#3F51B5"
                 android:textColorHint="#857D7D" />
 
             <EditText
@@ -48,7 +48,7 @@
                 android:hint="Password:"
                 android:inputType="textPassword"
                 android:padding="15dp"
-                android:textColor="#5F5C5C"
+                android:textColor="#3F51B5"
                 android:textColorHint="#928F8F" />
 
             <Button
@@ -56,9 +56,10 @@
                 android:layout_width="384dp"
                 android:layout_height="38dp"
                 android:layout_margin="10dp"
-                android:background="@android:color/white"
+                android:background="#3F51B5"
                 android:bottomLeftRadius="10dp"
                 android:bottomRightRadius="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Sign Up"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="#FFFFFF"

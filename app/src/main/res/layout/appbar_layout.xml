@@ -14,7 +14,7 @@
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#3949AB"
+            android:background="#3F51B5"
             app:titleTextColor="@android:color/white">
 
         </android.support.v7.widget.Toolbar>

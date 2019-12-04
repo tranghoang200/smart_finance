@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
-    android:background="@drawable/background_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dashboard"
     android:orientation="vertical">
 
     <TextView
@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
         android:text="@string/split_expense_title"
         android:textAllCaps="true"
-        android:textColor="#F9F8FA"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textColor="#51536D"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/title"
@@ -30,7 +30,7 @@
         android:hint="Title"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:textColor="#F9F9FA"
+        android:textColor="#3F51B5"
         android:textSize="20sp" />
 
     <EditText
@@ -42,7 +42,7 @@
         android:gravity="center"
         android:hint="Amount"
         android:inputType="numberDecimal"
-        android:textColor="#8F000000"
+        android:textColor="#3F51B5"
         android:textSize="20sp" />
 
     <EditText
@@ -54,7 +54,7 @@
         android:gravity="center"
         android:hint="Number of People"
         android:inputType="numberDecimal"
-        android:textColor="#8B000000"
+        android:textColor="#3F51B5"
         android:textSize="20sp" />
 
     <Button
@@ -62,7 +62,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:text="@string/split"
         android:textColor="#FFFFFF"
@@ -75,7 +76,7 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:text="@string/result"
-        android:textColor="#F7F3F3"
+        android:textColor="#3F51B5"
         android:textSize="20sp" />
 
     <EditText
@@ -86,6 +87,7 @@
         android:ems="10"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
+        android:textColor="#3F51B5"
         android:textSize="20sp" />
 
     <Button
@@ -93,11 +95,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/montserrat"
         android:gravity="center"
+        android:onClick="add"
         android:text="@string/add"
         android:textColor="#FFFFFF"
-        android:onClick="add"
         android:textSize="20sp" />
 
     <TextView

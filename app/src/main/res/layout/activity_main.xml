@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/background_color"
     android:layout_height="match_parent"
+    android:background="@color/dasboard_color"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.tranghoang.expense.MainActivity">
 
     <ScrollView
@@ -15,16 +15,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:fontFamily="@font/work_sans_medium"
+                android:gravity="center"
+                android:text="Welcome to Smart Finance"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#3F51B5"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="76dp"
                 android:fontFamily="@font/work_sans_medium"
                 android:gravity="center"
-                android:text="Welcome,  sign in to continue"
+                android:text="Sign in to continue"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#1D0F0F" />
 
@@ -36,7 +48,7 @@
                 android:background="@drawable/edittext_background"
                 android:hint="Email:"
                 android:padding="15dp"
-                android:textColor="@android:color/white"
+                android:textColor="#3F51B5"
                 android:textColorHint="#777171" />
 
             <EditText
@@ -48,7 +60,7 @@
                 android:hint="Password:"
                 android:inputType="textPassword"
                 android:padding="15dp"
-                android:textColor="@android:color/white"
+                android:textColor="#3F51B5"
                 android:textColorHint="#9C8282" />
 
             <Button
@@ -57,9 +69,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/mybutton"
+                android:fontFamily="@font/montserrat"
                 android:text="Log In"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#F8F8F8" />
+                android:textColor="#FCFCFC" />
 
             <TextView
                 android:id="@+id/forget_password"
@@ -76,14 +89,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Don't have account?Sign up here."
+                android:text="Don't have account? Sign up here."
                 android:textColor="#250288" />
 
         </LinearLayout>
 
 
     </ScrollView>
-
 
 
 </LinearLayout>
