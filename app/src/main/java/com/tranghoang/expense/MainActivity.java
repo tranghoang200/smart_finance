@@ -106,12 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Reset password activity..
 
-        mForgetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ReseatActivity.class));
-            }
-        });
+
 
     }
 

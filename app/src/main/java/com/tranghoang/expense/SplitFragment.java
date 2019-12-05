@@ -37,6 +37,7 @@ import java.util.Locale;
 public class SplitFragment extends Fragment {
 
     public EditText money_to;
+    public EditText title;
     public EditText money_from;
     public EditText people;
     public Button split;
@@ -57,7 +58,7 @@ public class SplitFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myview = inflater.inflate(R.layout.fragment_split, container, false);
-
+        title=myview.findViewById(R.id.title);
         money_from =  myview.findViewById(R.id.amount_from);
         money_to = (EditText) myview.findViewById(R.id.amount_to);
         people = (EditText) myview.findViewById(R.id.num_people_input);
@@ -141,7 +142,8 @@ public class SplitFragment extends Fragment {
             mExpenseDatabase=FirebaseDatabase.getInstance().getReference().child("ExpenseDatabase").child(uid);
             String id=mExpenseDatabase.push().getKey();
             String mDate= DateFormat.getDateInstance().format(new Date());
-            Data data=new Data(Double.parseDouble(money_to.getText().toString()),"Split","Split",id,mDate);
+            String mTitle=title.getText().toString();
+            Data data=new Data(Double.parseDouble(money_to.getText().toString()),mTitle,"Split",id,mDate);
             mExpenseDatabase.child(id).setValue(data);
             balanceRef.setValue(Double.parseDouble(balanceInvi.getText().toString()) - Double.parseDouble(money_to.getText().toString()));
             Intent intent = new Intent(getContext(), ChooseUserActivity.class);
