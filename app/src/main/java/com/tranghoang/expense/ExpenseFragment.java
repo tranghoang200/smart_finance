@@ -197,8 +197,17 @@ public class ExpenseFragment extends Fragment {
         mydialog.setView(myview);
 
         edtAmount=myview.findViewById(R.id.amount_edt);
-        edtCategory= myview.findViewById(R.id.category_spinner);
+        edtCategory= myview.findViewById(R.id.textCat);
+
         edtCategory.setText(category);
+        edtCategory.setEnabled(false);
+//        for(int i= 0; i < edtCategory.getAdapter().getCount(); i++)
+//        {
+//            if(spin.getAdapter().getItem(i).toString().contains(text))
+//            {
+//                spin.setSelection(i);
+//            }
+//        }
 
         edtType=myview.findViewById(R.id.type_edt);
         edtType.setText(type);

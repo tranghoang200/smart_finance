@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         mEmail=findViewById(R.id.email_login);
         mPass=findViewById(R.id.password_login);
         btnLogin=findViewById(R.id.btn_login);
-        mForgetPassword=findViewById(R.id.forget_password);
         mSignupHere=findViewById(R.id.signup_reg);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {

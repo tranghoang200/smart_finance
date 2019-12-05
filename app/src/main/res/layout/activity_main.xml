@@ -74,14 +74,6 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="#FCFCFC" />
 
-            <TextView
-                android:id="@+id/forget_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Forget Password?"
-                android:textColor="#250288" />
 
             <TextView
                 android:id="@+id/signup_reg"

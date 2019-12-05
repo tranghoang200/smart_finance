@@ -214,15 +214,17 @@ public class IncomeFragment extends Fragment {
 
         edtAmmount=myview.findViewById(R.id.amount_edt);
         edtType=myview.findViewById(R.id.type_edt);
-        edtCategory=myview.findViewById(R.id.category_spinner);
+        edtCategory= myview.findViewById(R.id.textCat);
 
+        edtCategory.setText(category);
+        edtCategory.setEnabled(false);
         //Set data to edit text..
 
         edtType.setText(type);
         edtType.setSelection(type.length());
 
-        edtCategory.setText(category);
-        edtCategory.setSelection(category.length());
+//        edtCategory.setText(category);
+//        edtCategory.setSelection(category.length());
 
         edtAmmount.setText(String.valueOf(amount));
         edtAmmount.setSelection(String.valueOf(amount).length());

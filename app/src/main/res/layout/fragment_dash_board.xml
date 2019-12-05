@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/dasboard_color"
+
     tools:context="com.tranghoang.expense.DashBoardFragment">
 
 
@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#A909A05C"
+            android:background="#3F51B5"
             android:orientation="horizontal"
             android:padding="10dp">
 
@@ -283,7 +283,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp"
             android:background="#CDDC39"
-            android:backgroundTint="#6A1B9A"
+            android:backgroundTint="#3F51B5"
             android:src="@drawable/income"
             app:fabSize="normal" />
 
