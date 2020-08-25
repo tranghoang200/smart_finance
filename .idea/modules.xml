@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android-smart_finance.iml" filepath="$PROJECT_DIR$/.idea/modules/Android-smart_finance.iml" group="smart_finance" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Android-smart_finance-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Android-smart_finance-app.iml" group="smart_finance/app" />
       <module fileurl="file://$PROJECT_DIR$/app/AndroidStudioProjects-smart_finance-app.iml" filepath="$PROJECT_DIR$/app/AndroidStudioProjects-smart_finance-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/StudioProjects-smart_finance2.iml" filepath="$PROJECT_DIR$/StudioProjects-smart_finance2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/StudioProjects-smart_finance2-app.iml" filepath="$PROJECT_DIR$/app/StudioProjects-smart_finance2-app.iml" />

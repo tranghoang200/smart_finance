@@ -1,5 +1,7 @@
 # Smart Finance - A Financial Tracking App
 
+![demo gif](demo.gif)
+
 Features:
 - Ability to make an account, login and store user database using Firebase Database system.
 - Ability to add transactions of expenses and income, initial balance and display it in the dashboard.

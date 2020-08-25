@@ -1,4 +1,4 @@
-package yazdaniscodelab.expensemanager;
+package com.tranghoang.expense;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("yazdaniscodelab.expensemanager", appContext.getPackageName());
+        assertEquals("com.tranghoang.expense", appContext.getPackageName());
     }
 }

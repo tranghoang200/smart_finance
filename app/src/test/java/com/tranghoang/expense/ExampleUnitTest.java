@@ -1,4 +1,4 @@
-package yazdaniscodelab.expensemanager;
+package com.tranghoang.expense;
 
 import org.junit.Test;
 
